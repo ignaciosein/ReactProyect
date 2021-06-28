@@ -1,36 +1,44 @@
 import React, { Component } from "react";
-import data from "../../data.json"
+import data from "../../data.json";
+ import Cards from "../Cards/Cards";
 export default class Main extends Component {
- 
-    constructor(props) {
-        super(props);
-    
-        this.state = {
-            task: data,  // array de objetos [{},{},{},{},]
-        };
-      }
+  constructor(props) {
+    super(props);
 
-      captureTask = (event)=>{
+    this.state = {
+      tasks: data, // array de objetos [{},{},{},{},]
+    };
+  }
+  captureTask = (event) => {
+    event.preventDefault();
 
-        event.preventDefault();
+    let newTask = event.target.elements.newTask.value;
 
-        let newTask = event.target.elements.newTask.value
+    this.addTask(newTask);
+  };
 
-
-        alert(newTask)
-
-      }
+  addTask = (newTasks) => {
+    this.setState({ tasks: [...this.state.tasks, { task: newTasks }] });
+  };
+  renderProduct = () =>this.state.tasks.map((task)=>   <Cards data={task}  />     )
+  
 
   render() {
     return (
-        <form onSubmit={this.captureTask}>
+      <div>
+      <form onSubmit={this.captureTask}>
         <label>Introduce nueva tarea</label>
         <br></br>
         <input type="text" name="newTask"></input>
         <br></br>
-
-        <input type="submit" value="Enviar" ></input>
+        <input type="submit" value="Enviar"></input>
       </form>
+      
+      {this.renderProduct()}
+      </div>
     );
   }
+
+
+  
 }
