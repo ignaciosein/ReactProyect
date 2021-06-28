@@ -1,6 +1,6 @@
 [
-    { "task": "estandar" },
-  { "task": "estandar2" },
-  { "task": "estandar3" },
-  { "task": "estandar4" }
+  { "task": "estandar", "id": 1 },
+  { "task": "estandar2", "id": 2 },
+  { "task": "estandar3", "id": 3 },
+  { "task": "estandar4", "id": 4 }
 ]
