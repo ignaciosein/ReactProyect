@@ -12,7 +12,8 @@ export default class Main extends Component {
   render() {
     return (
       <section>
-        <p>Tarea : {this.props.data.task}</p>
+        <p>Tarea : {this.props.data.task||this.state.task}</p>
+        <button onClick={this.props.remove}>Borrar tarea</button>
       </section>
     );
   }
