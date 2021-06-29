@@ -1,0 +1,34 @@
+@import "./Sass/mixins";
+@import './Sass/colors';
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+ 
+
+$viewport-phone: 300px;
+$viewport-tablet: 564px;
+$viewport-desktop: 960px;
+
+.wrapper{
+  margin: 0 auto;
+  width: $viewport-phone;
+  background-color: $color-primary;
+}
+
+@media screen and(min-width:$viewport-tablet + 1px) and (max-width:$viewport-desktop + 1px)  {
+  .wrapper{
+    width: $viewport-tablet;
+    background-color: $color-primary;
+  }
+}
+
+@media screen and(min-width:$viewport-desktop + 1px) {
+  .wrapper{
+    width: $viewport-desktop;
+    background-color: $color-primary;  }
+}
