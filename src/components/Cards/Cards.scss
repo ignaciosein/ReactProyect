@@ -1,0 +1,43 @@
+@import "../../Sass/colors";
+@import "../../Sass/mixins";
+.Cards{
+    justify-content: center;
+    @include flex-row();
+    background-color: $color-primary;
+    border-radius: 12px;
+    width: 80%;
+    padding: 12px;
+    margin: 12px;
+ 
+    box-shadow: 0 4px 10px $color-primary-dark, -4px -4px 10px $color-primary-ligth;
+    &:first-child{
+        margin-top: 12px;
+    }
+ 
+
+}
+
+
+@media screen and(min-width:565px) and (max-width:959px)  {
+    .Cards{
+      
+      width: 43%;
+      margin-top: 0;
+
+      &:first-child{
+          margin-top: 0;
+      }
+    }
+  }
+  
+@media screen and(min-width:961px ) {
+    .Cards{
+      width: 30%;
+      @include flex-column-space-between();
+      margin-top: 0;
+      margin-left: 10px;
+      &:first-child{
+        margin-top: 0;
+    }
+    }
+}

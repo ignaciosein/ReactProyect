@@ -1,0 +1,78 @@
+@import "../../Sass/mixins";
+@import "../../Sass/colors";
+
+.List {
+   
+  @include flex-column();
+
+  > .addTask {
+    @include flex-column-center();
+    margin: 12px 0;
+    align-items: center;
+
+    > label {
+      margin: 5px 0;
+    }
+
+    input {
+      
+      margin-bottom: 10px;
+    }
+
+  }
+  .contenedor {
+    justify-content: center;
+    margin-left: 2%;
+    width: 100%;
+    @include flex-row();
+  }
+  .wrapperButtons{
+    flex-direction: column;
+    .buttonSmallers{
+       
+     
+        width: 100%;
+
+  
+  }
+}
+}
+
+
+
+
+@media screen and(min-width:565px) and (max-width:959px)  {
+    .List{
+
+        .contenedor {
+            justify-content: flex-start;
+         
+         
+          }
+    }
+    
+  }
+  
+@media screen and(min-width:961px ) {
+    .List{
+
+        .contenedor {
+            justify-content: flex-start;
+         
+         
+          }
+          .wrapperButtons{
+            justify-content: center;
+            .buttonSmallers{
+               
+             
+                width: 50%;
+  
+          
+          }
+          }
+         
+    }
+    
+    
+}
