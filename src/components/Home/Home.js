@@ -18,7 +18,12 @@ class Home extends Component {
 
   render() {
     return (
-      <div></div>
+      <div>
+        <h1>Esta es la pagina de bienvenida</h1>
+
+        <a  href="/todo"><button>Lista de tareas</button></a>
+      
+      </div>
     );
   }
 }

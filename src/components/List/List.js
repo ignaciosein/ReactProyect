@@ -8,23 +8,14 @@ export default class Main extends Component {
     super(props);
 
     this.state = {
-      tasks: data, // array de objetos [{},{},{},{},]
+      /*  tasks: data,  */ // array de objetos [{},{},{},{},]
+      input: "",
     };
   }
-  captureTask = (event) => {
-    event.preventDefault();
+  componentWillMount() {
+    this.setState({ tasks: data });
+  }
 
-    let newTask = event.target.elements.newTask.value;
-
-    this.addTask(newTask);
-    event.target.elements.newTask.value = "";
-  };
-
-  addTask = (newTasks) => {
-    this.setState({
-      tasks: [...this.state.tasks, { task: newTasks, id: uuidv4() }],
-    });
-  };
   renderProduct = () =>
     this.state.tasks.map((task) => (
       <Cards
@@ -33,6 +24,35 @@ export default class Main extends Component {
         remove={() => this.removeTask(task.id)}
       />
     ));
+
+  handleChange = (event) => {
+    this.setState({ input: event.target.value });
+  };
+  showButton = () =>
+    this.state.input.length > 0 ? (
+      this.state.input.length > 6 ? (
+        <input type="submit" value="Enviar" />
+      ) : (
+        <p>"Tiene que tener 6 caracteres o más"</p>
+      )
+    ) : (
+      <></> //React Fragment
+    );
+
+  captureTask = (event) => {
+    event.preventDefault();
+
+    let newTask = event.target.elements.newTask.value;
+    /* newTask.length>=6?this.addTask(newTask):  */
+    this.setState({ input: "" });
+    event.target.elements.newTask.value = "";
+  };
+
+  addTask = (newTasks) => {
+    this.setState({
+      tasks: [...this.state.tasks, { task: newTasks, id: uuidv4() }],
+    });
+  };
 
   removeTask = (i) => {
     let filteredArray = this.state.tasks.filter((item) => {
@@ -50,17 +70,25 @@ export default class Main extends Component {
     return (
       <div className="List">
         <form className="addTask" onSubmit={this.captureTask}>
-          <label >Introduce nueva tarea</label>
+          <label>Introduce nueva tarea</label>
 
-          <input type="text" name="newTask"></input>
+          <input
+            type="text"
+            name="newTask"
+            onChange={this.handleChange}
+          ></input>
 
-          <input type="submit" value="Enviar"></input>
+          {this.showButton()}
         </form>
 
         <div className="contenedor">{this.renderProduct()}</div>
         <div className="wrapperButtons">
-        <button className="buttonSmallers" onClick={this.removeAllTasks}>clear tasks</button>
-        <button className="buttonSmallers" onClick={this.resetTasks}>reset tasks</button>
+          <button className="buttonSmallers" onClick={this.removeAllTasks}>
+            clear tasks
+          </button>
+          <button className="buttonSmallers" onClick={this.resetTasks}>
+            reset tasks
+          </button>
         </div>
       </div>
     );
